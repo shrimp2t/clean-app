@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
 var ProductVariantSchema = new mongoose.Schema({
+  product_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
   title: {
     type: String,
     unique: false,
@@ -13,6 +14,11 @@ var ProductVariantSchema = new mongoose.Schema({
   price: {
 	type: Number,
   },
+  compare_at_price: {
+	type: Number,
+	default: null,
+  },
+  options: [ {type: String } ]
   description: {
     type: String,
     unique: false,

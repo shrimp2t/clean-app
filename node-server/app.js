@@ -49,8 +49,8 @@ app.use(express.static(__dirname + '/templateLogReg'))
 // include routes
 var userRoutes = require('./routes/user')
 var productRoutes = require('./routes/product')
-app.use( userRoutes)
-app.use( productRoutes )
+app.use( '/json', userRoutes)
+app.use( '/json', productRoutes )
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

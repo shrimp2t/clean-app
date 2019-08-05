@@ -1,6 +1,7 @@
 import React from 'react'
 import { Input, TreeSelect, Select, Button, Upload, Icon, message, Form } from 'antd'
 import { Helmet } from 'react-helmet'
+import Config from '../../../config'
 
 const { TreeNode } = TreeSelect
 const { Option } = Select
@@ -24,19 +25,39 @@ const dragprop = {
 
 @Form.create()
 class ProductEdit extends React.Component {
-  state = {
-	isFetching: false,
-    fields: {
-      title: {
-        value: 'Product title new',
-      },
-    },
-  }
+  //   state = {
+  //     fields: {
+  //       title: {
+  //         value: 'Product title new',
+  //       },
+  //     },
+  //   }
 
   componentDidMount() {
-    const { form } = this.props
-    const { fields } = this.state
-    form.setFields(fields)
+    // const { form } = this.props
+    // const { fields } = this.state
+    // form.setFields(fields)
+
+    const {
+      form,
+      match: { params },
+    } = this.props
+
+    if (params.id) {
+      let { edit } = Config.product
+      edit = `${edit}/${params.id}`
+
+      fetch(edit)
+        .then(res => res.json())
+        .then(result => {
+          console.log('GET_result', result)
+          form.setFields(result)
+          //   this.setState({
+          //     isLoaded: true,
+          //     items: result.items,
+          //   })
+        })
+    }
   }
 
   handleSubmit = e => {
@@ -220,7 +241,7 @@ class ProductEdit extends React.Component {
                         </div>
                         <div className="col-lg-12">
                           <div className="form-actions">
-                            <Button type="primary" className="mr-2">
+                            <Button htmlType="submit" type="primary" className="mr-2">
                               Save Product
                             </Button>
                             <Button type="default">Cancel</Button>

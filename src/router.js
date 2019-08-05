@@ -129,6 +129,11 @@ const routes = [
     exact: true,
   },
   {
+    path: '/ecommerce/product-new',
+    component: loadable(() => import('pages/ecommerce/product-edit')),
+    exact: true,
+  },
+  {
     path: '/ecommerce/product-edit/:id',
     component: loadable(() => import('pages/ecommerce/product-edit')),
     exact: true,

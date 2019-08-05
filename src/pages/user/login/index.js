@@ -29,26 +29,13 @@ class Login extends Component {
     return (
       <div>
         <Helmet title="Login" />
-        <div className={`${styles.title} login-heading`}>
-          <h1>
-            <strong>WELCOME TO CLEAN UI REACT - REACT REDUX ADMIN TEMPLATE</strong>
-          </h1>
-          <p>
-            Pluggable enterprise-level react application framework.
-            <br />
-            An excellent front-end solution for web applications built upon Ant Design and UmiJS.
-            <br />
-            Credentials for testing purposes - <strong>admin@mediatec.org</strong> /{' '}
-            <strong>cleanui</strong>
-          </p>
-        </div>
         <div className={styles.block}>
           <div className="row">
             <div className="col-xl-12">
               <div className={styles.inner}>
                 <div className={styles.form}>
                   <h4 className="text-uppercase">
-                    <strong>Please log in</strong>
+                    <strong>Log in</strong>
                   </h4>
                   <br />
                   <Form layout="vertical" hideRequiredMark onSubmit={this.onSubmit}>
