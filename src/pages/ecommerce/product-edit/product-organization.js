@@ -1,16 +1,19 @@
 import React from 'react';
-import { TreeSelect, Select } from 'antd';
-
+import { TreeSelect, Select, Form } from 'antd';
 
 const { TreeNode } = TreeSelect;
 const { Option } = Select;
 const FormItem = Form.Item;
 
+const children = [];
+for (let i = 10; i < 36; i += 1) {
+  children.push(<Option key={i.toString(36) + i}>{i.toString(36) + i}</Option>);
+}
+
 @Form.create()
 class ProductOrganization extends React.Component {
-
   render() {
-    const { form, match: { params } } = this.props;
+    const { form } = this.props;
     return (
       <div className="card layout-card">
         <div className="card-header">
@@ -60,60 +63,25 @@ class ProductOrganization extends React.Component {
                 </FormItem>
               </div>
 
-              <h4 className="text-black mt-2 mb-3">
-                <strong>Pricing</strong>
-              </h4>
-
-              <h4 className="text-black mt-2 mb-3">
-                <strong>Attributes</strong>
-              </h4>
-              <div className="row">
-                <div className="col-lg-6">
-                  <div className="form-group">
-                    <FormItem label="Colors">
-                      {form.getFieldDecorator('colors')(
-                        <Select
-                          id="product-edit-colors"
-                          showSearch
-                          style={{
-                            width: '100%'
-                          }}
-                          placeholder="Select a color"
-                          optionFilterProp="children"
-                          filterOption={(input, option) =>
-                            option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                        >
-                          <Option value="blue">Blue</Option>
-                          <Option value="red">Red</Option>
-                          <Option value="green">Green</Option>
-                        </Select>
-                      )}
-                    </FormItem>
-                  </div>
-                </div>
-                <div className="col-lg-6">
-                  <div className="form-group">
-                    <FormItem label="Size">
-                      {form.getFieldDecorator('size')(
-                        <Select
-                          id="product-edit-size"
-                          showSearch
-                          style={{
-                            width: '100%'
-                          }}
-                          placeholder="Select a size"
-                          optionFilterProp="children"
-                          filterOption={(input, option) =>
-                            option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
-                        >
-                          <Option value="s">Small</Option>
-                          <Option value="m">Middle</Option>
-                          <Option value="xl">Extra large</Option>
-                        </Select>
-                      )}
-                    </FormItem>
-                  </div>
-                </div>
+              <div className="form-group">
+                <FormItem label="Tags">
+                  {form.getFieldDecorator('tags')(
+                    <Select
+                      mode="tags"
+                      id="product-edit-colors"
+                      showSearch
+                      style={{
+                        width: '100%'
+                      }}
+                      placeholder="Select a color"
+                      optionFilterProp="children"
+                      filterOption={(input, option) =>
+                        option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                    >
+                      {children}
+                    </Select>
+                  )}
+                </FormItem>
               </div>
             </div>
           </div>
