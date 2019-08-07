@@ -11,7 +11,7 @@ class ProductInventory extends React.Component {
 			<div className="card layout-card">
 				<div className="card-header">
 					<div className="utils__title">
-						<strong>Inventory dsada</strong>
+						<strong>Inventory</strong>
 					</div>
 				</div>
 				<div className="card-body">
